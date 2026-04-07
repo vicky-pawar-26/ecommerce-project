@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
 import { DeliveryOptions } from './DeliveryOptions';
+import axios from 'axios';
 
-export function OrderSummery({deliveryOptions, cart, loadCart}) {
+export function OrderSummery({ deliveryOptions, cart, loadCart }) {
     return (
         <div className="order-summary">
             {
@@ -9,6 +10,11 @@ export function OrderSummery({deliveryOptions, cart, loadCart}) {
                     const selectedDeliveryOption = deliveryOptions.find((options) => {
                         return options.id === cartItem.deliveryOptionId;
                     })
+
+                    const deleteCartItem = async () => {
+                        await axios.delete(`/api/cart-items/${cartItem.productId}`);
+                        await loadCart();
+                    }
 
                     return (
                         <div key={cartItem.productId} className="cart-item-container">
@@ -34,13 +40,13 @@ export function OrderSummery({deliveryOptions, cart, loadCart}) {
                                         <span className="update-quantity-link link-primary">
                                             Update
                                         </span>
-                                        <span className="delete-quantity-link link-primary">
+                                        <span onClick={deleteCartItem} className="delete-quantity-link link-primary">
                                             Delete
                                         </span>
                                     </div>
                                 </div>
 
-                                <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart}/>
+                                <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart} />
                             </div>
                         </div>
                     );
