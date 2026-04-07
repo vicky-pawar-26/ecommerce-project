@@ -12,13 +12,15 @@ export function CheckOutPage(props) {
     const [paymentSummary, setPaymentSummary] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/delivery-options?expand=estimatedDeliveryTime').then((response) => {
+        const getCheckOutData = async () => {
+            let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
             setDeliveryOptions(response.data);
-        });
 
-        axios.get('/api/payment-summary').then((response) => {
+            response = await axios.get('/api/payment-summary');
             setPaymentSummary(response.data);
-        });
+        }
+
+        getCheckOutData();
     }, [])
 
     return (
