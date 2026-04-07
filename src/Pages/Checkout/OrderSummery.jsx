@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { DeliveryOptions } from './DeliveryOptions';
 
-export function OrderSummery({deliveryOptions, cart}) {
+export function OrderSummery({deliveryOptions, cart, loadCart}) {
     return (
         <div className="order-summary">
             {
@@ -40,7 +40,7 @@ export function OrderSummery({deliveryOptions, cart}) {
                                     </div>
                                 </div>
 
-                                <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} />
+                                <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart}/>
                             </div>
                         </div>
                     );
