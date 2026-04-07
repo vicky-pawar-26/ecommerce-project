@@ -49,10 +49,10 @@ export function CheckOutPage(props) {
                 <div className="page-title">Review your order</div>
 
                 <div className="checkout-grid">
-                    <OrderSummery deliveryOptions={deliveryOptions} cart={props.cart} loadCart={props.loadCart}/>
+                    <OrderSummery deliveryOptions={deliveryOptions} cart={props.cart} loadCart={props.loadCart} />
 
                     <div className="payment-summary">
-                        <PaymentSummary paymentSummary={paymentSummary} />
+                        <PaymentSummary paymentSummary={paymentSummary} loadCart={props.loadCart} />
                     </div>
                 </div>
             </div>
