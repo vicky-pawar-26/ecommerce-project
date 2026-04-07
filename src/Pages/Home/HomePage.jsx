@@ -19,7 +19,7 @@ export function HomePage(props) {
         <>
             <Header cart={props.cart} />
             <div className="home-page">
-                <ProductGrid products={products} />
+                <ProductGrid products={products} loadCart={props.loadCart}/>
             </div>
         </>
     );

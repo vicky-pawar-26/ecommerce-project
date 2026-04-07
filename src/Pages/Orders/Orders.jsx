@@ -11,7 +11,7 @@ export function Orders({ cart }) {
 
     useEffect(() => {
         const getOrderData = async () => {
-            const response = axios.get('/api/orders?expand=products');
+            const response = await axios.get('/api/orders?expand=products');
             setOrders(response.data);
         }
         getOrderData();
