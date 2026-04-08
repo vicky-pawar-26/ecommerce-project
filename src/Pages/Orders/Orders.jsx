@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Fragment, useEffect } from 'react';
 import { useState } from 'react';
 import dayjs from 'dayjs';
+import { formatMoney } from '../../Utils/money';
 
 export function Orders({ cart, loadCart }) {
     const [orders, setOrders] = useState([]);
@@ -36,7 +37,7 @@ export function Orders({ cart, loadCart }) {
                                             </div>
                                             <div className="order-total">
                                                 <div className="order-header-label">Total:</div>
-                                                <div>${(o.totalCostCents / 100).toFixed(2)}</div>
+                                                <div>{formatMoney(o.totalCostCents)}</div>
                                             </div>
                                         </div>
 

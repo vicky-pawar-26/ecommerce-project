@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { DeliveryOptions } from './DeliveryOptions';
 import axios from 'axios';
+import { formatMoney } from '../../Utils/money';
 
 export function OrderSummery({ deliveryOptions, cart, loadCart }) {
     return (
@@ -31,7 +32,7 @@ export function OrderSummery({ deliveryOptions, cart, loadCart }) {
                                         {cartItem.product.name}
                                     </div>
                                     <div className="product-price">
-                                        ${(cartItem.product.priceCents / 100).toFixed(2)}
+                                        {formatMoney(cartItem.product.priceCents)}
                                     </div>
                                     <div className="product-quantity">
                                         <span>

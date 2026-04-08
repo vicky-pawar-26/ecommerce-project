@@ -1,5 +1,6 @@
 import axios from "axios";
 import dayjs from "dayjs";
+import { formatMoney } from "../../Utils/money";
 
 export function DeliveryOptions({ cartItem, deliveryOptions, loadCart }) {
     return (
@@ -12,7 +13,7 @@ export function DeliveryOptions({ cartItem, deliveryOptions, loadCart }) {
                     let priceString = 'FREE Shipping';
 
                     if (x.priceCents > 0) {
-                        priceString = `$${(x.priceCents / 100).toFixed(2)} - Shipping`;
+                        priceString = `${formatMoney(x.priceCents)} - Shipping`;
                     }
 
                     const updateDeliveryOption = async () => {

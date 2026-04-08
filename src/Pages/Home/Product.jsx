@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { formatMoney } from "../../Utils/money";
 
 export function Product({ product, loadCart }) {
     const [quantity, setQuantity] = useState(1);
@@ -36,7 +37,7 @@ export function Product({ product, loadCart }) {
             </div>
 
             <div className="product-price">
-                ${(product.priceCents / 100).toFixed(2)}
+                {formatMoney(product.priceCents)}
             </div>
 
             <div className="product-quantity-container">
